@@ -1,6 +1,17 @@
+from flask import render_template,request,redirect,url_for
+from . import main
+from .. import db,photos
 from flask_login import login_required
-from ..models import Reviews, User
+from ..models import Pitch, User , Comments
+from .forms import PitchForm,CommentForm,UpdateProfile
 
+
+@main.route('/')
+def index():
+
+    message = "Welcome to pitches!"
+    title = 'Pitch! Pitch! Pitch!'
+    return render_template('index.html',message=message,title=title)
 
 
 @main.route('/user/<uname>')
