@@ -19,7 +19,7 @@ class User(UserMixin, db.Model):
     up_vote = db.relationship('Upvote', backref='post', lazy='dynamic')
     down_vote = db.relationship('Downvote', backref='post', lazy='dynamic')
 
-     def save(self):
+    def save(self):
         db.session.add(self)
         db.session.commit()
 
@@ -66,13 +66,13 @@ class Post(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-    def __repr__(self)
+    def __repr__(self):
         return f'Post title: {self.title}'
 
 class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
-     username = db.Column(db.String(255),index = True)
+    username = db.Column(db.String(255),index = True)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     comment = db.Column(db.Text())
 
@@ -115,7 +115,7 @@ class Upvote(db.Model):
         upvote = Upvote.query.filter_by(post_id=id).all()
         return upvote
 
-      def __repr__(self):
+    def __repr__(self):
         return f'{self.post_id}'
 
 class Downvote(db.Model):
