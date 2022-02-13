@@ -1,0 +1,8 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+{% block content %}
+<div>{{ display_pitches(posts)}}</div>
+<div>{{display_comments(comments)}}</div>
+
+{% endblock %}
