@@ -36,6 +36,16 @@ def profile(uname):
         return redirect(url_for('.profile',uname=user.username))
     return render_template('profile/profile.html', form=form)
 
+@main.router('/user')
+@login_required
+def user():
+    username= current_user.username
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        abort(404)
+    return render_template('profile/profile.html',user=user)
+
+
 @main.route('/posts')
 @login_required
 def posts():
@@ -63,6 +73,40 @@ def new_post():
 
     return render_template('pitch,html',form=form)
 
+@main.route('/comment/<int:post_id>', methods=['GET','POST'])
+@login_required
+def new_comment():
+     form = CommentForm()
+
+     comments= Comment.query.all()
+     if form.validate_on_submit():
+         comment = form.comment.data
+
+         new_comment = Comment(comment=comment)
+
+         db.session.add(new_comment)
+         db.seesion.commit()
+     return render_template('comment.html',comment_form=form)
+
+@main.route('/like/<int:id>', methods=['POST','GET'])
+@login_required
+def upvote(id):
+    post=Post.query.get(id)
+    new_vote=Upvote(post=post, upvote=1)
+    new_vote.save()
+    return redirect(url_for('main.posts'))
+
+@main.route('/dislike/<int:id>', methods = ['GET','POST'])
+@login_required
+def downvote(id):
+    post=Post.query.get(id):
+    dislike=Downvote(post=post, downvote=1)
+    dislike.save()
+    return redirect(url_for('main.posts'))
+
+
+
+    
 
 
 
