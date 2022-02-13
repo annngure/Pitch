@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+
+{% block content%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+           <h1>Login</h1> 
+
+        <div class="form">
+            <form action='/login' method='POST'>
+                <lable>Username</lable>
+                <input type='text' class='control' placeholder='Username' name='username'>
+                <lable>Password</lable>
+                <button type ='submit' id='button'></button>
+            </form>
+            <p>Dont have an account?<a href='/signup'>Sign Up</a></p>
+        </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock%}
