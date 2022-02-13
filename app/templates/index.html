@@ -1,3 +1,7 @@
+{% extends 'base.html%}
+{% import 'macros.html' as macro%}
+
+{% block content%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +11,18 @@
     <title>{{title}}</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>One Minute Pitch</h1>
+                <p>One minute can make you.</p>
+            </div>
+            <div class="col-md-12">
+                <a class="button" href='/new_post'>New Posts</a>
+                <a class="button" href='posts'>View Pots</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 </body>
 </html>
