@@ -5,8 +5,10 @@
 <div class="class container">
     <div class="row">
        <div class="col-md-8">
-           {{wtf.quick_form(registration_form)}}
-
+    
+           {{wtf.quick_form(registration_form, button_map={'submit':'outline-primary'})}}
+           <br>
+           <p>Do you have an existing  account?<a href="{{url_for('auth.login')}}">Click here to login.</a></p>
        </div>
     </div>
 </div>

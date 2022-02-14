@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+<!-- <div class="container-fluid"> -->
+<div class="overlay">
+    <h1 class="">Pitches</h1>
+    <a href="/new_post"><button class="btn">New Pitch</button></a>
+       
+</div>
+
+{% macro display_pitches(posts)%}
+{% for new_post in posts %}
+<div class="card">
+    <div class="card-body">
+        <p>{{new_post.post}}</p>
+        <p><br>{{new_post.category}}</p>
+    </div>
+    <div class="container">
+        <a href="/comment/{{new_post.id}}"><button class="btn btn-info">Comments</button></a>
+        <a href="/like/{{new_post.id}}"><button class="btn btn-success">Likes {{new_post.up_vote.count()}}</button></a>
+        <h1>{{upvotes}}</h1>
+        <a href="/dislike/{{new_post.id}}"><button class="btn btn-danger">Dislikes {{new_post.down_vote.count()}}</button></a>
+    </div>           
+</div>
+{% endfor %}
+{%endmacro%}
+
+{% macro dispaly_pitches(comment)%}
+{% for comment in comments %}
+<div class="overlay">
+    <div class="card">
+        <p>{{comment.comment}}</p>
+        <p >{{comment.post.title}}</p>
+    </div>
+</div>
+{% endfor%}
+{% endmacro%}

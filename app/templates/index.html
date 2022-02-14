@@ -1,5 +1,5 @@
-{% extends 'base.html%}
-{% import 'macros.html' as macro%}
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
 
 {% block content%}
 <!DOCTYPE html>
@@ -14,15 +14,28 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>One Minute Pitch</h1>
-                <p>One minute can make you.</p>
+                <h1 class="text-center">1 Minute Pitch</h1>
+                <br>
+                <p class="text-center" style="font-size: x-large;">One minute can make you.</p>
             </div>
-            <div class="col-md-12">
-                <a class="button" href='/new_post'>New Posts</a>
-                <a class="button" href='posts'>View Pots</a>
+            <div class="col-md-6">
+                <a class="button" href='/new_post'>All Pitches</a>
+                <br>
+                <br>
+                <a class="button" href='/new_post'>Religion</a>
+                <br>
+                <br>
+                <a class="button" href='/new_post'>Businesss</a>
+                <br>
+                <br>
+                <a class="button" href='/new_post'>Science</a>
+                <br>
+                <br>
+                <a class="button" href='/new_post'>Entertainment</a>
             </div>
         </div>
     </div>
-{% endblock %}
 </body>
 </html>
+{% endblock %}
+

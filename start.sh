@@ -1,5 +1,6 @@
-export MAIL_USERNAME=annngurewanjiku@gmail.com
-export MAIL_PASSWORD=1234
-export SECRET_KEY=1234
+export SQLALCHEMY_DATABASE_URI='postgressql+psycopg2://ann:db_password@localhost:pitch'
+export MAIL_USERNAME='annngurewanjiku@gmail.com'
+export MAIL_PASSWORD='0705351175'
+export SECRET_KEY='pofty87hfdtymn'
 
-python3.6 run.py server
+python3 run.py server

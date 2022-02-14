@@ -1,20 +1,21 @@
 from flask import render_template,request,redirect,url_for
 from . import main
-# from .. import db,photos
+from .. import db
 from flask_login import login_required,current_user
 from ..models import User , Comment, Post,Upvote, Downvote
-from .forms import PostForm,CommentForm,UpdateProfile
+from .form import PostForm,CommentForm,UpdateProfile
 
 
 @main.route('/')
 def index():
-    post= Post.query.all()
-    religion= Post.query.filter_by(category='religion').all()
-    science= Post.query.filter_by(category='science').all()
-    entertainment= Post.query.filter_by(category='entertainment').all()
+    # post= Post.query.all()
+    # religion= Post.query.filter_by(category='religion').all()
+    # science= Post.query.filter_by(category='science').all()
+    # entertainment= Post.query.filter_by(category='entertainment').all()
     message = "Welcome to pitches!"
     title = 'Pitch! Pitch! Pitch!'
-    return render_template('index.html',message=message,title=title,religion=religion,science=science,entertainment=entertainment,posts=posts)
+    return render_template('index.html',message=message,title=title)
+    # (religion=religion,science=science,entertainment=entertainment,posts=posts)
 
 
 @main.route('/user/<uname>')
@@ -36,7 +37,7 @@ def profile(uname):
         return redirect(url_for('.profile',uname=user.username))
     return render_template('profile/profile.html', form=form)
 
-@main.router('/user')
+@main.route('/user')
 @login_required
 def user():
     username= current_user.username
@@ -99,7 +100,7 @@ def upvote(id):
 @main.route('/dislike/<int:id>', methods = ['GET','POST'])
 @login_required
 def downvote(id):
-    post=Post.query.get(id):
+    post=Post.query.get(id)
     dislike=Downvote(post=post, downvote=1)
     dislike.save()
     return redirect(url_for('main.posts'))

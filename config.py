@@ -4,8 +4,9 @@ class Config:
     '''
     General configuration parent class
     '''
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI")
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = os.environ.get("SECRET_KEY")
     # UPLOADED_PHOTOS_DEST ='app/static/photos'
     #email configurations
     MAIL_SERVER = 'smtp.gmail.com'
@@ -21,6 +22,10 @@ class ProdConfig(Config):
         Config: The parent configuration class with General configuration settings
     '''
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    if SQLALCHEMY_DATABASE_URI and SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
+        SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://","postgresql://",1)
+
+    pass
 
 class DevConfig(Config):
     '''
@@ -29,7 +34,7 @@ class DevConfig(Config):
         Config: The parent configuration class with General configuration settings
     '''
 
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    SQLALCHEMY_DATABASE_URI = "postgressql+psycopg2://ann:db_password@localhost:pitch"
 
 
     DEBUG = True

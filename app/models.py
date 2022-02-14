@@ -14,7 +14,8 @@ class User(UserMixin, db.Model):
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
-    password_secure = db.Column(db.String(255)) 
+    password_secure = db.Column(db.String(255))
+    pitches= db.relationship('Pitch',backref='user',lazy='dynamic') 
     comments = db.relationship('comment',backref='post',lazy='dynamic')
     up_vote = db.relationship('Upvote', backref='post', lazy='dynamic')
     down_vote = db.relationship('Downvote', backref='post', lazy='dynamic')
@@ -48,9 +49,9 @@ class Post(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255),index = True)
     email = db.Column(db.String(255),unique = True,index = True)
-    role_id = deb.Column(db.Integer,db.ForeignKey('roles.id'))
+    role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     bio = db.Column(db.String(255))
-    post=db.Column(db.String(255))
+    pitches=db.Column(db.String(255))
     category= db.Column(db.String())
     profile_pic_path = db.Column(db.String())
     password_secure = db.Column(db.String(255)) 
@@ -74,7 +75,7 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255),index = True)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
-    comment = db.Column(db.Text())
+    comments = db.Column(db.Text())
 
     def save(self):
         db.session.add(self)
@@ -99,7 +100,7 @@ class Upvote(db.Model):
     upvote = db.Column(db.Integer, default=1)
     username = db.Column(db.String(255),index = True)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
-    comment = db.Column(db.Text())
+    comments = db.Column(db.String())
 
 
     def save(self):
@@ -124,7 +125,7 @@ class Downvote(db.Model):
     downvote = db.Column(db.Integer, default=1)
     username = db.Column(db.String(255),index = True)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
-    comment = db.Column(db.Text())
+    comments = db.Column(db.String())
 
     def save(self):
         db.session.add(self)
