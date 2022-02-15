@@ -10,8 +10,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
 </head>
-<body>
-    <div class="container" style= "background-color:beige;">
+<body style= "background-color:rgb(206, 204, 204);" >
+   <nav class="navbar" style ="background-color: darkgreen;">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <ol class="nav-item">
+          <a class="nav-link" href="{{url_for('auth.register')}}" style ="color: beige; font-size: large;">SIGN-UP.</a>
+        </ol>
+      </ul> 
+      <ul class="navbar-nav">
+         <ol class="nav-item">
+          <a class="nav-link" href="{{url_for('auth.login')}}" style ="color: beige; font-size: large;">SIGN-IN.</a>
+        </ol>
+      </ul>
+    </div>
+    </nav>
+
+    <div class="container" >
         <div class="row">
             <div class="col-md-12">
                 <h1 class="text-center" style="color: green; font-family: Arial, Helvetica, sans-serif;">Pitch! Pitch!</h1>
@@ -22,27 +37,41 @@
                 <br>
             </div>
             <div class="col-md-4">
-                <a class="button" href='/new_post'style ="font-size: large;">All Pitches</a>
-                <br>
-                <br>
-            </div> 
-            <div class="col-md-4">
-               <a class="button" href='/new_post'style ="font-size: large;">Religion</a>
-                <br>
-                <br>
+                <div class="card">
+                    <a class="button" href='/new_post'style ="font-size: large;">All Pitches</a>
+                    <br>
+                    <br>  
+                </div>
             </div>
+
             <div class="col-md-4">
-                <a class="button" href='/new_post'style ="font-size: large;">Businesss</a>
-                <br>
-                <br>
+                <div class="card">
+                    <a class="button" href='/new_post'style ="font-size: large;">Religion</a>
+                    <br>
+                    <br>  
+                </div>
             </div>
+
             <div class="col-md-4">
-                <a class="button" href='/new_post'style ="font-size: large;">Science</a>
-                <br>
-                <br>
+                <div class="card">
+                  <a class="button" href='/new_post'style ="font-size: large;">Businesss</a>
+                  <br>
+                  <br>  
+                </div>
             </div>
+
             <div class="col-md-4">
-                <a class="button" href='/new_post'style ="font-size: large;">Entertainment</a>
+                <div class="card">
+                   <a class="button" href='/new_post'style ="font-size: large;">Science</a>
+                   <br>
+                   <br>  
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                   <a class="button" href='/new_post'style ="font-size: large;">Entertainment</a>   
+                </div>
             </div>
         </div>
     </div>

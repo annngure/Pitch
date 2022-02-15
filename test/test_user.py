@@ -1,5 +1,5 @@
 import unittest
-from .models import User,Post,Comment,Upvote,Downvote
+from .models import User
 from app import db
 
 class UserModelTest(unittest.TestCase):

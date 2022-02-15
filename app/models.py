@@ -15,10 +15,10 @@ class User(UserMixin, db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     password_secure = db.Column(db.String(255))
-    pitches= db.relationship('Pitch',backref='user',lazy='dynamic') 
-    comments = db.relationship('comment',backref='post',lazy='dynamic')
-    up_vote = db.relationship('Upvote', backref='post', lazy='dynamic')
-    down_vote = db.relationship('Downvote', backref='post', lazy='dynamic')
+    pitches= db.relationship('posts',backref='user',lazy='dynamic') 
+    comments = db.relationship('comment',backref='users',lazy='dynamic')
+    up_vote = db.relationship('Upvote', backref='users', lazy='dynamic')
+    down_vote = db.relationship('Downvote', backref='users', lazy='dynamic')
 
     def save(self):
         db.session.add(self)
@@ -50,7 +50,7 @@ class Post(db.Model):
     email = db.Column(db.String(255),unique = True,index = True)
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     bio = db.Column(db.String(255))
-    pitches=db.Column(db.String(255))
+    pitches= db.relationship('posts',backref='posts',lazy='dynamic') 
     category= db.Column(db.String())
     profile_pic_path = db.Column(db.String())
     password_secure = db.Column(db.String(255)) 
@@ -82,7 +82,7 @@ class Comment(db.Model):
 
     @classmethod
     def get_comments(cls, post_id):
-        comments = Comment.query.filter_by(post_id=post_id).all()
+        comments = Comment.query.filter_by(posts_id=posts_id).all()
         return comments
 
     def delete(self):
@@ -107,12 +107,12 @@ class Upvote(db.Model):
         db.session.commit()
 
     def upvote(cls, id):
-        upvote_post = Upvote(user=current_user, post_id=id)
+        upvote_post = Upvote(user=current_user, posts_id=id)
         upvote_post.save()
 
     @classmethod
     def query_upvotes(cls, id):
-        upvote = Upvote.query.filter_by(post_id=id).all()
+        upvote = Upvote.query.filter_by(posts_id=id).all()
         return upvote
 
     def __repr__(self):
@@ -131,12 +131,12 @@ class Downvote(db.Model):
         db.session.commit()
 
     def downvote(cls, id):
-        downvote_post = Downvote(user=current_user, post_id=id)
+        downvote_post = Downvote(user=current_user, posts_id=id)
         downvote_post.save()
   
     @classmethod
     def query_downvotes(cls, id):
-        downvote = Downvote.query.filter_by(post_id=id).all()
+        downvote = Downvote.query.filter_by(posts_id=id).all()
         return downvote
 
     def __repr__(self):
