@@ -10,27 +10,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
 </head>
-<body style= "background-color:rgb(206, 204, 204);" >
-   <nav class="navbar" style ="background-color: darkgreen;">
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <ol class="nav-item">
-          <a class="nav-link" href="{{url_for('auth.register')}}" style ="color: beige; font-size: large;">SIGN-UP.</a>
-        </ol>
-      </ul> 
-      <ul class="navbar-nav">
-         <ol class="nav-item">
-          <a class="nav-link" href="{{url_for('auth.login')}}" style ="color: beige; font-size: large;">SIGN-IN.</a>
-        </ol>
-      </ul>
-    </div>
-    </nav>
-
+<body style= "background-color:rgb(228, 222, 222);" >
+    <nav class="navbar" style ="background-color: darkgreen;">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <ol class="nav-item">
+              <a class="nav-link" href="{{url_for('auth.register')}}" style ="color: beige; font-size: large;">SIGN-UP.</a>
+            </ol>
+          </ul> 
+          <ul class="navbar-nav">
+             <ol class="nav-item">
+              <a class="nav-link" href="{{url_for('auth.login')}}" style ="color: beige; font-size: large;">SIGN-IN.</a>
+            </ol>
+          </ul>
+        </div>
+        </nav>
+   
     <div class="container" >
         <div class="row">
             <div class="col-md-12">
                 <h1 class="text-center" style="color: green; font-family: Arial, Helvetica, sans-serif;">Pitch! Pitch!</h1>
                 <br>
+                <p style ="font-size: large;">{{message}}</p>
                 <p  style="font-size: large;">One minute can make you or break you. So use it wisely when given. </p>
                 <p style ="font-size: large;">Here are examples to help.</p>
                 <br>

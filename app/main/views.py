@@ -3,19 +3,19 @@ from . import main
 from .. import db
 from flask_login import login_required,current_user
 from ..models import User , Comment, Post,Upvote, Downvote
-from .form import PostForm,CommentForm,UpdateProfile
+from .forms import PostForm,CommentForm,UpdateProfile
 
 
 @main.route('/')
 def index():
-    # post= Post.query.all()
+    # posts= Post.query.all()
     # religion= Post.query.filter_by(category='religion').all()
     # science= Post.query.filter_by(category='science').all()
     # entertainment= Post.query.filter_by(category='entertainment').all()
     message = "Welcome to pitches!"
     title = 'Pitch! Pitch! Pitch!'
-    return render_template('index.html',message=message,title=title)
-    # (religion=religion,science=science,entertainment=entertainment,posts=posts)
+    return render_template('index.html',message = message,title=title)
+    # (,religion =religion,science=science,entertainment=entertainment,posts=Post)
 
 
 @main.route('/user/<uname>')
