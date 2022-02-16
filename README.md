@@ -12,7 +12,6 @@ https://makeyou.herokuapp.com/
 #### Technologies used
     - Python 3
     - HTML
-    - Bootstrap 4
     - Heroku
     - Postgresql
     -SQLAlchemy
